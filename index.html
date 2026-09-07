@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Insurance Lots — insurer-sold cars on Copart, updated daily</title>
+<meta name="description" content="A daily list of every car an insurance company put on Copart that runs and drives, on a repairable title, with keys, under 60,000 miles and 2022 or newer. Rebuilt every night from Copart's own listing data.">
+<link rel="canonical" href="https://tisch-soft.github.io/car-auction-inspector/">
+<meta property="og:title" content="Insurance Lots — insurer-sold cars on Copart">
+<meta property="og:description" content="Every insurer-sold car on Copart, rebuilt every night. 2,867 lots today.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{--ground:#F1F3F5;--surface:#FFFFFF;--sunk:#E9EDF0;--ink:#172029;--muted:#5F6C78;--line:#D6DCE2;--line-strong:#B9C2CB;--accent:#0E6B75;--accent-soft:#DDEEF0;--paid:#B26A12;--paid-soft:#F7E8D3;--good:#1E7A46;
+    --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;--body:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;--mono:"IBM Plex Mono",Consolas,"Courier New",monospace}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ground:#0F151A;--surface:#16202A;--sunk:#111A22;--ink:#E6EBEF;--muted:#97A4AE;--line:#2A3641;--line-strong:#3B4956;--accent:#58BEC8;--accent-soft:#12333A;--paid:#E5A54B;--paid-soft:#3A2A12;--good:#4FBF80}}
+  :root[data-theme="dark"]{--ground:#0F151A;--surface:#16202A;--sunk:#111A22;--ink:#E6EBEF;--muted:#97A4AE;--line:#2A3641;--line-strong:#3B4956;--accent:#58BEC8;--accent-soft:#12333A;--paid:#E5A54B;--paid-soft:#3A2A12;--good:#4FBF80}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:940px;margin:0 auto;padding:38px 22px 70px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:22px}
+  .eyebrow{font:600 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:10px 0 10px;font:700 clamp(38px,7vw,62px)/.95 var(--display);letter-spacing:-.005em;text-wrap:balance}
+  .lede{margin:0;max-width:60ch;font-size:18px}
+  .stats{display:flex;flex-wrap:wrap;gap:26px;margin-top:22px}
+  .stat b{display:block;font:700 30px/1 var(--display);font-variant-numeric:tabular-nums}
+  .stat span{font-size:12.5px;color:var(--muted)}
+  section{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
+  section:first-of-type{border-top:0}
+  h2{margin:0 0 12px;font:600 30px/1.05 var(--display);text-wrap:balance}
+  p{max-width:66ch}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:5px;background:var(--surface);margin-top:14px}
+  table{border-collapse:collapse;width:100%;min-width:700px;font-size:14px}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font:600 11.5px/1.2 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--sunk);white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  td a{font-weight:600;text-decoration:none}td a:hover{text-decoration:underline}
+  .sub{display:block;font-size:12px;color:var(--muted);font-weight:400}
+  td.d,td.n{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.n{text-align:right}
+  td.b{color:var(--good);font-weight:600}
+  .cta{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--paid);border-radius:5px;padding:20px 22px}
+  .cta h3{margin:0 0 8px;font:600 24px/1.1 var(--display)}
+  .cta ul{margin:0 0 16px;padding-left:20px}
+  .cta li{margin:0 0 5px}
+  .btn{display:inline-block;background:var(--paid);color:#fff;text-decoration:none;font:600 15px var(--body);padding:11px 20px;border-radius:5px}
+  .btn:hover{filter:brightness(1.07)}
+  .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+  .price{font:700 30px/1 var(--display);color:var(--paid)}
+  .note{font-size:13px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:16px 18px}
+  .card h3{margin:0 0 6px;font:600 20px/1.1 var(--display)}
+  .card p{margin:0;font-size:14px}
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  code{font:500 13px var(--mono);background:var(--accent-soft);padding:1px 5px;border-radius:3px}
+</style></head>
+<body><div class="wrap">
+
+<header>
+  <div class="eyebrow">Updated 2026-09-07 · rebuilt every night at 03:00 US auction time</div>
+  <h1>Insurance Lots</h1>
+  <p class="lede">Every insurer-sold car on Copart, rebuilt every night. Filtered to the ones worth a look: they run and drive, the title is repairable, the keys are there, 60,000 miles or fewer, 2022 or newer.</p>
+  <div class="stats">
+    <div class="stat"><b>2,867</b><span>lots on today's list</span></div>
+    <div class="stat"><b>31,739</b><span>insurer-sold lots in total</span></div>
+    <div class="stat"><b>8</b><span>insurers</span></div>
+    <div class="stat"><b>48</b><span>states</span></div>
+    <div class="stat"><b>143,602</b><span>lots tracked night to night</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>Why insurer-sold is the thing to filter on</h2>
+  <p>An insurance company sells a given car exactly once — the day they total it. Everyone else selling on Copart is usually selling it <em>again</em>: bought cheap, patched up, photographed clean, and put back through at a markup. Copart publishes the seller on many lots, but gives you no way to search by it.</p>
+  <p>So this list does. Every night it reads Copart's own listing data for every lot with a sale date, keeps the ones an insurer consigned, and applies the filters above. Nothing here is scraped from a third party and nothing is guessed — seller, title, drive status and mileage are Copart's own fields, reproduced.</p>
+</section>
+
+<section>
+  <h2>Today's list — a sample</h2>
+  <p class="note">12 of 2,867 lots selling from 2026-09-07 onward. Bids and dates move daily; open a lot before you rely on a number.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Sale</th><th>Vehicle</th><th>Insurer</th><th>Damage</th><th>Miles</th><th>Est. retail</th><th>Current bid</th></tr></thead>
+    <tbody>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/64384576" target="_blank" rel="noopener">2027 Kia TELLURIDE</a><span class="sub">CERT OF TITLE-SALVAGE VEHICLE · VT - RUTLAND</span></td><td>USAA</td><td>Front end</td><td class="n">2,605 mi</td><td class="n">$53,573</td><td class="n b">$5,400</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/63764276" target="_blank" rel="noopener">2026 Hyundai SONATA HYBRID</a><span class="sub">CERT OF TITLE-SALVAGE · NM - ALBUQUERQUE</span></td><td>GEICO</td><td>Front end</td><td class="n">83 mi</td><td class="n">$38,624</td><td class="n b">$5,200</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/61390026" target="_blank" rel="noopener">2026 Nissan SENTRA</a><span class="sub">SALVAGE VEHICLE TITLE · TX - DALLAS SOUTH</span></td><td>GEICO</td><td>Front end</td><td class="n">315 mi</td><td class="n">$-1</td><td class="n b">—</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/47158146" target="_blank" rel="noopener">2026 Hyundai ELANTRA</a><span class="sub">CERT OF TITLE - SALVAGE · VA - HAMPTON</span></td><td>GEICO</td><td>Front end</td><td class="n">320 mi</td><td class="n">$26,047</td><td class="n b">$3,150</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/61239686" target="_blank" rel="noopener">2026 Hyundai KONA</a><span class="sub">SALVAGE TITLE · CO - DENVER CENTRAL</span></td><td>USAA</td><td>Front end</td><td class="n">461 mi</td><td class="n">$27,858</td><td class="n b">$350</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/61730866" target="_blank" rel="noopener">2026 Lexus UX 300H</a><span class="sub">SALVAGE CERTIFICATE · CA - VAN NUYS</span></td><td>USAA</td><td>Front end</td><td class="n">517 mi</td><td class="n">$44,924</td><td class="n b">$80</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/56816966" target="_blank" rel="noopener">2026 Honda ACCORD</a><span class="sub">SALVAGE CERTIFICATE · CA - VAN NUYS</span></td><td>GEICO</td><td>Side</td><td class="n">566 mi</td><td class="n">$29,366</td><td class="n b">$700</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/64453566" target="_blank" rel="noopener">2026 Chevrolet TRAX</a><span class="sub">CERT OF TITLE-SALVAGE · GA - SAVANNAH</span></td><td>GEICO</td><td>All over</td><td class="n">772 mi</td><td class="n">$23,635</td><td class="n b">$300</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/63759796" target="_blank" rel="noopener">2026 Kia SELTOS</a><span class="sub">CERT OF TITLE-SALVAGE · NE - LINCOLN</span></td><td>GEICO</td><td>Rear end</td><td class="n">869 mi</td><td class="n">$26,025</td><td class="n b">—</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/63618766" target="_blank" rel="noopener">2026 Honda CR-V</a><span class="sub">CERT OF TITLE-SALVAGE · NM - ALBUQUERQUE</span></td><td>Farmers Insurance</td><td>Front end</td><td class="n">1,033 mi</td><td class="n">$41,688</td><td class="n b">—</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/62270096" target="_blank" rel="noopener">2026 Jeep WRANGLER</a><span class="sub">CERT OF TITLE-SALVAGE · LA - VINTON</span></td><td>USAA</td><td>Minor dent/scratches</td><td class="n">1,330 mi</td><td class="n">$48,131</td><td class="n b">$10,800</td></tr>
+<tr><td class="d">2026-09-08</td><td><a href="https://www.copart.com/lot/60292596" target="_blank" rel="noopener">2026 Kia K5</a><span class="sub">CERT OF TITLE SLVG REBUILDABLE · FL - TAMPA SOUTH</span></td><td>GEICO</td><td>Front end</td><td class="n">1,740 mi</td><td class="n">$28,802</td><td class="n b">$25</td></tr>
+    </tbody>
+  </table></div>
+  <div class="cta">
+    <h3>The full list</h3>
+    <p class="price">$19<span style="font:400 15px var(--body);color:var(--muted)"> / month</span></p>
+    <ul>
+      <li>All 2,867 lots, not 12 — filter by make, state, port yards, damage, fuel, insurer, sale status.</li>
+      <li>What changed overnight: which lots are new, which were re-listed without selling, and what the bid was when we first saw it.</li>
+      <li>Hybrids and EVs, no-dealer-licence lots, and the "does not start" set an insurer often means a flat battery.</li>
+      <li>Rebuilt every night. Cancel any time.</li>
+    </ul>
+    <a class="btn" href="https://REPLACE-ME.lemonsqueezy.com/buy/00000000-0000-0000-0000-000000000000">Get the full list</a>
+  </div>
+</section>
+
+<section>
+  <h2>Check any lot yourself, free</h2>
+  <div class="grid">
+    <div class="card"><h3>Auction history</h3><p>One click shows whether this exact car has been auctioned before, what it sold for, and how many times it failed to sell.</p></div>
+    <div class="card"><h3>Before and after</h3><p>When a previous sale exists, it pulls that listing's photos and sets them beside today's, matched angle for angle. You see what the insurer let go of — and what has changed since.</p></div>
+    <div class="card"><h3>Seller badges on search</h3><p>Every row in Copart's own results gets a badge naming the consigning insurer, with a toggle to hide everything else.</p></div>
+  </div>
+  <p style="margin-top:16px"><a class="btn ghost" href="https://chromewebstore.google.com/detail/cfkmbjddealedpfmnpdbifcpnegkilcn">Add the free Chrome extension</a></p>
+  <p class="note">Free, no account. The AI photo inspection is optional and uses your own Claude or Gemini key, billed by them, not by us.</p>
+</section>
+
+<section>
+  <h2>How to check a Copart lot's history without any tool</h2>
+  <p>You can do all of this by hand, and it is worth knowing how:</p>
+  <ol>
+    <li>Get the VIN from the lot page. Signed out, Copart masks the last six characters — the VIN plate photo usually shows the rest.</li>
+    <li>Search that VIN on a public auction archive. If the car appears with an earlier sale date and a different lot number, it has been through before.</li>
+    <li>Compare the two sets of photographs. A rebuilt car photographs clean; the earlier listing is the only place the damage is still visible.</li>
+    <li>Read the seller field. An insurer means a first loss. A dealer or a car-buying company means someone is selling it on.</li>
+    <li>Read the title line in full. "Certificate of Destruction" and "Non-Repairable" can never be registered again in any state, whatever the photos look like.</li>
+  </ol>
+  <p>The extension above does steps 1 to 5 on the page you are already looking at. This list does step 4 for the whole catalog, every night.</p>
+</section>
+
+<footer>
+  <p>Snapshot 2026-09-07. Seller, title, drive status, mileage and prices are Copart's own listing fields, reproduced and not endorsed. This site never says what a car is worth or what to bid, and a lot missing from the list is not "not insurance" — Copart withholds the seller name on most lots, and unknown is unknown.</p>
+  <p>Not affiliated with Copart, Inc. Copart is a trademark of its owner.</p>
+</footer>
+
+</div></body></html>
