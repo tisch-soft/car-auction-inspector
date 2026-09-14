@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>What's new — Car Auction Inspector</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Every shipped version of the Car Auction Inspector extension, and what changed in it.">
+<style>
+ :root{--ink:#1a1c2e;--muted:#5b6070;--line:#e3e5ee;--brand:#5b4fcf}
+ *{box-sizing:border-box}
+ body{margin:0;background:#f6f7fb;color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+ .wrap{max-width:720px;margin:0 auto;padding:32px 22px 64px}
+ header{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:26px 22px}
+ header .wrap{padding:0;max-width:720px}
+ header h1{margin:0;font-size:23px}
+ header p{margin:6px 0 0;opacity:.92;font-size:14px}
+ h2{margin:34px 0 10px;font-size:17px;color:var(--brand);border-bottom:1px solid var(--line);padding-bottom:7px}
+ ul{padding-left:20px;margin:10px 0}
+ li{margin-bottom:7px}
+ p{color:var(--muted);font-size:14.5px}
+ code{background:#eceefb;padding:1px 5px;border-radius:4px;font-size:13px}
+ a{color:var(--brand)}
+ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+</style></head>
+<body>
+<header><div class="wrap"><h1>What&rsquo;s new</h1><p>Car Auction Inspector — every shipped version and what changed in it.</p></div></header>
+<div class="wrap">
+<p>Every shipped version, newest first. <code>tools/build-zip.ps1</code> refuses to build a</p>
+<p>version that is not listed here, for the same reason it bumps the version on</p>
+<p>every build: a release nobody can identify is a release nobody can support.</p>
+<p>The Chrome Web Store has no &quot;what's new&quot; field, so this file is the record. It</p>
+<p>is rendered onto the landing page by the nightly site build and linked from the</p>
+<p>extension's own popup.</p>
+<h2 id="v6.17.1">6.17.1</h2>
+<ul>
+  <li>The panel opens compact on every lot again. A preference written by a control</li>
+</ul>
+<p>  that no longer exists was forcing it open for anyone who had ever expanded it</p>
+<p>  once; the setting is gone and the stale value is cleared on load.</p>
+<ul>
+  <li><strong>Hybrid and electric are separate.</strong> A Tesla is not a Corolla with a battery,</li>
+</ul>
+<p>  and a combined &quot;hybrid or electric&quot; filter option made them look like one</p>
+<p>  thing. Removed.</p>
+<ul>
+  <li>Trim has its own column on the dashboard, beside the model.</li>
+  <li>After Chrome updates the extension silently, the toolbar icon carries a dot</li>
+</ul>
+<p>  until you open the popup, which tells you what changed and links to the full</p>
+<p>  list.</p>
+<h2 id="v6.17.0">6.17.0</h2>
+<p><strong>The panel answers before you ask it, and says less while doing it.</strong></p>
+<ul>
+  <li><strong>Auction history now includes the runs we watched ourselves.</strong> The public</li>
+</ul>
+<p>  archives have no page at all for most live Copart lots — 26 of 45 sampled</p>
+<p>  answered &quot;gone&quot; — and they are silent by definition on first-loss insurance</p>
+<p>  cars, because an insurer sells a given car exactly once. So the extension now</p>
+<p>  reports what it saw itself: how many times this lot went to auction without</p>
+<p>  selling, and the bid it reached each time. It states the period it actually</p>
+<p>  covers and never implies a complete record.</p>
+<ul>
+  <li><strong>Three panel states, one click each</strong> — verdict only, everything, minimised.</li>
+</ul>
+<p>  The panel opens compact on every lot instead of remembering an expand you made</p>
+<p>  somewhere else.</p>
+<ul>
+  <li><strong>Lot intel is one line per fact</strong>, with the reasoning behind a <code>+</code>. Three new</li>
+</ul>
+<p>  rows: keys, where the car is, and whether anything blocks exporting it from</p>
+<p>  the United States.</p>
+<ul>
+  <li><strong>VIN lookup links moved in with the AI inspection.</strong> Opening that section</li>
+</ul>
+<p>  never starts a run; nothing here spends your API credit unless you press it.</p>
+<ul>
+  <li><strong>Actions are quiet now</strong> and the information carries the visual weight, which</li>
+</ul>
+<p>  is the way round it should always have been.</p>
+<ul>
+  <li><strong>Button presses are counted anonymously</strong> — the feature name and nothing</li>
+</ul>
+<p>  else, no identifier, no way to link two of them. Without it there was no way</p>
+<p>  to tell a feature nobody wants from a feature nobody can find.</p>
+<h2 id="v6.16.0">6.16.0</h2>
+<ul>
+  <li>Market facts are reported per five-year model-year bracket rather than lumped</li>
+</ul>
+<p>  across every year of a model.</p>
+<ul>
+  <li>A completed sale with no published price is no longer reported as &quot;$0&quot;, and a</li>
+</ul>
+<p>  missing price now sends us to the second archive to look for the real one.</p>
+<ul>
+  <li>Plain-language bid spreads: &quot;a quarter were under $275&quot; instead of quartiles.</li>
+</ul>
+<h2 id="v6.15.0">6.15.0</h2>
+<ul>
+  <li>The auction history check runs by itself on every lot page, with the answer on</li>
+</ul>
+<p>  the panel's title bar so it is readable while the panel is collapsed.</p>
+<ul>
+  <li><code>dreambid.pl</code> added as a second archive, asked only when the first has nothing.</li>
+  <li>A lot that neither archive has heard of is now told apart from one they hold</li>
+</ul>
+<p>  and report no sale for.</p>
+<ul>
+  <li>Market facts per make and model, counted from our own nightly snapshots.</li>
+</ul>
+<h2 id="v6.14.4">6.14.4</h2>
+<ul>
+  <li>Seller filter on search results: every row badged with the consigning insurer,</li>
+</ul>
+<p>  with two toggles. Copart has no such filter.</p>
+<ul>
+  <li>Fixed: Google's new Gemini key format (<code>AQ.…</code>) was rejected by a check that</li>
+</ul>
+<p>  only knew the old <code>AIza</code> prefix, locking users out.</p>
+<footer><a href="./">&larr; Back to the list</a> · Not affiliated with Copart, Inc.</footer>
+</div>
+</body></html>
