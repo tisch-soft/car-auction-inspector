@@ -83,6 +83,16 @@
   .btn{display:inline-block;background:var(--paid);color:var(--on-paid);text-decoration:none;font:600 15px var(--body);padding:11px 20px;border-radius:5px}
   .btn:hover{filter:brightness(1.07)}
   .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+  /* The free beta's sign-up form. */
+  .freeform{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;margin:4px 0 6px}
+  .freeform input[type=email]{flex:1 1 240px;min-width:0;font:15px var(--body);padding:10px 12px;border-radius:5px;border:1px solid var(--line-strong);background:var(--ground);color:var(--ink)}
+  .freeform input[type=email]:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .freeform .btn{border:0;cursor:pointer}
+  .freeform .btn:disabled{opacity:.6;cursor:wait}
+  .hp{position:absolute;left:-5000px;width:1px;height:1px;opacity:0}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .freemsg{min-height:1.4em;margin:6px 0;font-size:14px;color:var(--good)}
+  .freemsg.err{color:var(--bad)}
   .price{font:700 30px/1 var(--display);color:var(--paid)}
   .note{font-size:13px;color:var(--muted)}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px}
@@ -202,24 +212,26 @@
 <tr><td class="d">2026-09-18</td><td><a href="https://www.copart.com/lot/64305626" target="_blank" rel="noopener">2026 Mercedes-benz GLC COUPE</a><span class="sub">SALVAGE CERTIFICATE · CA - VAN NUYS</span></td><td>Farmers Insurance</td><td>Side</td><td class="n">2,955 mi</td><td class="n">$77,139</td><td class="n b">$13,000</td></tr>
     </tbody>
   </table></div>
-  <div class="cta">
-    <h3>Полный список</h3>
-    <p class="price">$19<span style="font:400 15px var(--body);color:var(--muted)"> / месяц</span></p>
+  <div class="cta" id="get">
+    <h3>Полный список — бесплатно на время беты</h3>
+    <p class="price">Бесплатно<span style="font:400 15px var(--body);color:var(--muted)"> на время беты</span></p>
     <ul>
       <li>Все 2,972 лотов, а не 12 — фильтры по марке, штату, портовым площадкам, повреждению, топливу, страховой и статусу торгов.</li>
       <li>Что изменилось за ночь: какие лоты новые, какие перевыставлены без продажи и какая была ставка, когда мы увидели лот впервые.</li>
       <li>Гибриды и электромобили, лоты без дилерской лицензии и набор «не заводится», где у страховой это часто просто севший аккумулятор.</li>
-      <li>Пересобирается каждую ночь. Отписаться можно в любой момент.</li>
+      <li>Пересобирается каждую ночь, с оповещениями в Telegram по вашим фильтрам.</li>
     </ul>
-    <a class="btn" href="https://REPLACE-ME.lemonsqueezy.com/buy/00000000-0000-0000-0000-000000000000">Получить полный список</a>
-    <p class="note" style="margin-top:12px">Лицензионный ключ придёт в чеке. Вставьте его один раз на <a href="https://insurance-lots.tlmet.workers.dev/">странице списка</a>, и браузер его запомнит.</p>
+    <a class="btn" href="https://t.me/best_us_auto_auctions_ru">Бесплатная бета: регистрация откроется совсем скоро</a>
+    <p class="note" style="margin-top:10px">А пока бесплатный Telegram-канал публикует пять таких машин каждую ночь.</p>
+    <p class="note" style="margin-top:10px">Когда начнутся платные тарифы, участники беты сохранят цену $9 в месяц навсегда. Мы напишем вам заранее.</p>
+    
   </div>
 </section>
 
 <section>
-  <h2>Или получайте десять из них бесплатно, каждое утро</h2>
-  <p>Тот же список, покороче, публикуется в канал каждое утро до открытия американских торгов. Без регистрации и без карты.</p>
-  <p><a class="btn ghost" href="https://t.me/best_us_auto_listings">Ежедневный список на английском</a> <a class="btn ghost" href="https://t.me/best_us_auto_auctions_ru">Список на русском</a></p>
+  <h2>Или получайте пять из них бесплатно, каждую ночь</h2>
+  <p>Тот же список, покороче, публикуется в Telegram-канал каждую ночь после закрытия американских торгов. Без регистрации и без карты. В премиум-канале — десять.</p>
+  <p><a class="btn ghost" href="https://t.me/best_us_auto_listings">Ежедневный список на английском</a> <a class="btn ghost" href="https://t.me/best_us_auto_auctions_ru">Список на русском</a> <a class="btn" href="https://t.me/+54_mXL8sbXNjMGIy">⭐ Премиум-канал: десять за ночь</a></p>
 </section>
 
 <section>
