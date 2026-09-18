@@ -14,6 +14,12 @@
 .theme-toggle{font:600 12.5px/1 var(--body);padding:5px 10px;border-radius:4px;cursor:pointer;background:transparent;color:var(--hero-ink);border:1px solid var(--hero-ink);opacity:.9;white-space:nowrap}
 .theme-toggle:hover{opacity:1}
 .theme-toggle:focus-visible{outline:2px solid var(--hero-ink);outline-offset:2px}
+.langsw{display:inline-flex;flex:none;border:1px solid var(--hero-ink);border-radius:5px;overflow:hidden}
+.langsw>a,.langsw>button{font:600 12.5px/1 var(--body);letter-spacing:.05em;padding:5px 10px;margin:0;border:0;border-radius:0;background:transparent;color:var(--hero-ink);text-decoration:none;cursor:pointer}
+.langsw>*+*{border-left:1px solid var(--hero-ink)}
+.langsw>a:hover,.langsw>button:hover{box-shadow:inset 0 -2px 0 var(--hero-ink)}
+.langsw>[aria-current="page"],.langsw>[aria-pressed="true"]{background:var(--hero-ink);color:var(--ground)}
+.langsw>*:focus-visible{outline:2px solid var(--hero-ink);outline-offset:-3px}
  *{box-sizing:border-box}
  body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
  .wrap{max-width:720px;margin:0 auto;padding:32px 22px 64px}
@@ -21,6 +27,8 @@
  header{background:var(--hero-bg);color:var(--hero-ink);border-bottom:2px solid var(--hero-rule);padding:22px 0 20px}
  header .wrap{padding:0 22px;max-width:720px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:10px 18px}
  header .titles{flex:1 1 320px}
+ /* The theme button and the EN | RU | ES switch; the changelog is English, so RU and ES lead to their home pages. */
+ header .tools{display:flex;gap:10px;align-items:center}
  header h1{margin:0;font:700 34px/1 var(--display)}
  header p{margin:8px 0 0;color:var(--hero-muted);font-size:14.5px}
  h2{margin:34px 0 10px;font:600 24px/1.1 var(--display);color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:7px}
@@ -39,7 +47,7 @@
   .ilcb-b button:hover,.ilcb-b button:focus-visible{background:var(--accent-soft)}
 </style></head>
 <body>
-<header><div class="wrap"><div class="titles"><h1>What&rsquo;s new</h1><p>Car Auction Inspector — every shipped version and what changed in it.</p></div><button class="theme-toggle" type="button" data-to-light="☀ Light" data-to-dark="☾ Dark">☀ Light</button></div></header>
+<header><div class="wrap"><div class="titles"><h1>What&rsquo;s new</h1><p>Car Auction Inspector — every shipped version and what changed in it.</p></div><div class="tools"><button class="theme-toggle" type="button" data-to-light="☀ Light" data-to-dark="☾ Dark">☀ Light</button><span class="langsw" role="group" aria-label="Language"><a href="./changelog.html" hreflang="en" lang="en" title="English" aria-current="page">EN</a><a href="./ru/" hreflang="ru" lang="ru" title="Русский">RU</a><a href="./es/" hreflang="es" lang="es" title="Español">ES</a></span></div></div></header>
 <div class="wrap">
 <p>Every shipped version, newest first. <code>tools/build-zip.ps1</code> refuses to build a version that is not listed here, for the same reason it bumps the version on every build: a release nobody can identify is a release nobody can support.</p>
 <p>The Chrome Web Store has no &quot;what's new&quot; field, so this file is the record. It is rendered onto the landing page by the nightly site build and linked from the extension's own popup.</p>

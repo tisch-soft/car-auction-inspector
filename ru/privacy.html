@@ -5,6 +5,9 @@
 <script>(function(){var ID="G-HBVQNE95GF",K="il-consent",TZ=/^(?:Europe\/(?:Amsterdam|Andorra|Athens|Belfast|Berlin|Bratislava|Brussels|Bucharest|Budapest|Busingen|Copenhagen|Dublin|Gibraltar|Guernsey|Helsinki|Isle_of_Man|Jersey|Lisbon|Ljubljana|London|Luxembourg|Madrid|Malta|Mariehamn|Monaco|Nicosia|Oslo|Paris|Prague|Riga|Rome|San_Marino|Sofia|Stockholm|Tallinn|Vaduz|Vatican|Vienna|Vilnius|Warsaw|Zagreb|Zurich)|Atlantic\/(?:Azores|Canary|Faeroe|Faroe|Jan_Mayen|Madeira|Reykjavik)|Asia\/(?:Famagusta|Nicosia)|Africa\/Ceuta|Arctic\/Longyearbyen|America\/(?:Cayenne|Guadeloupe|Marigot|Martinique|St_Barthelemy)|Indian\/(?:Mayotte|Reunion)|CET|EET|MET|WET|Eire|GB|GB-Eire|Iceland|Poland|Portugal|UTC|UCT|GMT|Universal|Zulu|Etc\/.*)$/;var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}var c=null;try{var s=JSON.parse(localStorage.getItem(K)||"null");if(s&&(s.v==="granted"||s.v==="denied")&&Date.now()-s.t<15552e6)c=s.v}catch(e){}window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;var C=window.ilConsent={ask:!tz||TZ.test(tz),choice:c,on:false,load:function(){if(C.on)return;C.on=true;gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied",region:["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","IS","LI","NO","GB","CH","GF","GP","MQ","RE","YT","MF"]});gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"granted"});if(C.choice==="granted")gtag("consent","update",{analytics_storage:"granted"});gtag("js",new Date());gtag("config",ID,{allow_google_signals:false,allow_ad_personalization_signals:false});var el=document.createElement("script");el.async=true;el.src="https://www.googletagmanager.com/gtag/js?id="+ID;document.head.appendChild(el)},set:function(v){C.choice=v;try{localStorage.setItem(K,JSON.stringify({v:v,t:Date.now()}))}catch(e){}if(v==="granted"){window["ga-disable-"+ID]=false;if(C.on)gtag("consent","update",{analytics_storage:"granted"});else C.load();return}window["ga-disable-"+ID]=true;if(C.on)gtag("consent","update",{analytics_storage:"denied"});document.cookie.split(";").forEach(function(x){var n=x.split("=")[0].trim();if(/^_ga/.test(n)){document.cookie=n+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain="+location.hostname;document.cookie=n+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/"}})}};if(c==="granted"||(!C.ask&&c!=="denied"))C.load();})()</script>
 <title>Конфиденциальность — Insurance Lots</title>
 <link rel="canonical" href="https://tisch-soft.github.io/car-auction-inspector/ru/privacy.html">
+<link rel="alternate" hreflang="en" href="https://tisch-soft.github.io/car-auction-inspector/privacy.html">
+<link rel="alternate" hreflang="ru" href="https://tisch-soft.github.io/car-auction-inspector/ru/privacy.html">
+<link rel="alternate" hreflang="es" href="https://tisch-soft.github.io/car-auction-inspector/es/privacy.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <script>(function(){var t;try{t=localStorage.getItem("il-theme")}catch(e){}document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark")})()</script>
@@ -14,12 +17,19 @@
 .theme-toggle{font:600 12.5px/1 var(--body);padding:5px 10px;border-radius:4px;cursor:pointer;background:transparent;color:var(--hero-ink);border:1px solid var(--hero-ink);opacity:.9;white-space:nowrap}
 .theme-toggle:hover{opacity:1}
 .theme-toggle:focus-visible{outline:2px solid var(--hero-ink);outline-offset:2px}
+.langsw{display:inline-flex;flex:none;border:1px solid var(--hero-ink);border-radius:5px;overflow:hidden}
+.langsw>a,.langsw>button{font:600 12.5px/1 var(--body);letter-spacing:.05em;padding:5px 10px;margin:0;border:0;border-radius:0;background:transparent;color:var(--hero-ink);text-decoration:none;cursor:pointer}
+.langsw>*+*{border-left:1px solid var(--hero-ink)}
+.langsw>a:hover,.langsw>button:hover{box-shadow:inset 0 -2px 0 var(--hero-ink)}
+.langsw>[aria-current="page"],.langsw>[aria-pressed="true"]{background:var(--hero-ink);color:var(--ground)}
+.langsw>*:focus-visible{outline:2px solid var(--hero-ink);outline-offset:-3px}
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
   a{color:var(--accent)}
   .wrap{max-width:760px;margin:0 auto;padding:32px 22px 90px}
   .top{display:flex;align-items:center;gap:14px;margin-bottom:18px;font:600 13px var(--body)}
   .top .theme-toggle{margin-left:auto}
+  .top .langsw{margin-left:-4px}
   h1{margin:0 0 4px;font:700 40px/1.05 var(--display)}
   h2{margin:30px 0 8px;font:600 22px/1.15 var(--display);color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:6px}
   p{margin:0 0 12px;font-size:15px}
@@ -34,7 +44,7 @@
   .ilcb-b button:hover,.ilcb-b button:focus-visible{background:var(--accent-soft)}
 </style></head>
 <body><div class="wrap">
-<div class="top"><a href="./">← К списку</a><button class="theme-toggle" type="button" data-to-light="☀ Светлая" data-to-dark="☾ Тёмная">☀ Светлая</button></div>
+<div class="top"><a href="./">← К списку</a><button class="theme-toggle" type="button" data-to-light="☀ Светлая" data-to-dark="☾ Тёмная">☀ Светлая</button><span class="langsw" role="group" aria-label="Язык"><a href="../privacy.html" hreflang="en" lang="en" title="English">EN</a><a href="./privacy.html" hreflang="ru" lang="ru" title="Русский" aria-current="page">RU</a><a href="../es/privacy.html" hreflang="es" lang="es" title="Español">ES</a></span></div>
 <h1>Конфиденциальность</h1>
 <p class="note">Обновлено 18 сентября 2026</p>
 <p>Insurance Lots публикует tisch-soft. Вопросы и запросы о ваших данных: <a href="mailto:tisch_games@proton.me">tisch_games@proton.me</a>.</p>
@@ -56,6 +66,7 @@
 <p>Правовое основание: предоставление списка, который вы запросили, и наш законный интерес понимать, пользуются ли им.</p>
 <h2>Хранится только в вашем браузере</h2>
 <p>Выбор светлой или тёмной темы (il-theme) и ваш выбор по cookies (il-consent, спросим снова через полгода). К нам это не попадает.</p>
+<p>Страница списка хранит ваш ключ (il-key), который отправляет нам только для проверки, и выбранный язык (il-lang), который к нам не попадает.</p>
 <h2>Кто ещё участвует</h2>
 <p>Сайт размещён на GitHub Pages, который может записывать IP-адреса в целях безопасности. Регистрации приходят на наш сервер на Cloudflare, который обрабатывает ваш IP-адрес, чтобы доставить запрос. Ссылки на Copart, Chrome Web Store и Telegram ведут на сайты со своими правилами.</p>
 <h2>Ваши права</h2>
