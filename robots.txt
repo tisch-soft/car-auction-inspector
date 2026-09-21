@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tisch-soft.github.io/car-auction-inspector/sitemap.xml
+Sitemap: https://insurancelots.com/sitemap.xml
