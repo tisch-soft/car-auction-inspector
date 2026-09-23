@@ -51,8 +51,8 @@
 <div class="wrap">
 <p>Every shipped version, newest first. <code>tools/build-zip.ps1</code> refuses to build a version that is not listed here, for the same reason it bumps the version on every build: a release nobody can identify is a release nobody can support.</p>
 <p>The Chrome Web Store has no &quot;what's new&quot; field, so this file is the record. It is rendered onto the landing page by the nightly site build and linked from the extension's own popup.</p>
-<h2 id="v6.17.2">6.17.2</h2>
-<p><strong>A new name — Insurance Lots: Car Auction History &amp; AI Inspector — and final bids in the auction history.</strong> Chrome installs it by itself once the Chrome Web Store has reviewed it.</p>
+<h2 id="v6.17.3">6.17.3</h2>
+<p><strong>A new name — Insurance Lots: Car Auction History &amp; AI Inspector — and final bids in the auction history.</strong> Chrome installs it by itself once the Chrome Web Store has reviewed it. (6.17.2 was withdrawn from review the same day to add the last two fixes below; it never reached anyone.)</p>
 <ul>
   <li><strong>Final bids.</strong> Every run that ended without a sale now shows its final bid, from the auction archives — the number Copart erases when it puts an unsold car back on the calendar. Until now the list showed the bid we recorded the evening before each sale and called it &quot;the bid reached&quot;: on one lot that read $13,000 where bidding actually ended at $39,750. That earlier figure now appears only for a run no archive has listed yet, and only as &quot;at least&quot;.</li>
   <li>The verdict at the top of the panel names the highest final bid.</li>
@@ -61,6 +61,8 @@
   <li>Long histories show the newest five runs and fold the rest into one line.</li>
   <li><strong>No API key is needed to start</strong>, and the popup now says so. The auction history, the lot details, the market numbers and the insurer filter are free; a key is only for AI photo inspection. The red &quot;Missing API Key&quot; warning is gone.</li>
   <li>A short welcome page opens once after installing. Removing the extension opens one question — why — with a fixed list of answers, no cookie, and nothing you type is kept.</li>
+  <li><strong>Insurers by name.</strong> The archives often name the seller — &quot;GEICO&quot;, &quot;USAA&quot;, &quot;Progressive&quot; — and those names do not contain the word &quot;insurance&quot;, so a GEICO sale read &quot;sold by non-insurance seller&quot; and counted as a dealer's re-sale. Completed sales now name the seller and say when it is an insurer, and a car written off twice says so: &quot;Sold 2 times before, each time by an insurer&quot;, with both prices.</li>
+  <li><strong>AI inspection results are readable.</strong> The damage list, its heading, the confidence line and the disclaimer were grey on the purple panel; they are white on a darker background now, like the auction history.</li>
   <li>When the AI provider is busy, a failed photo comparison offers to try again instead of leaving you to reload the page.</li>
   <li>Auction history text is white on a darker background, readable on the purple panel, and every panel section starts folded.</li>
   <li>&quot;Rate it&quot; in the popup, and help and contact at insurancelots.com/support.html.</li>
