@@ -41,7 +41,12 @@
   .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
   code{font:500 13px var(--mono);background:var(--accent-soft);padding:1px 5px;border-radius:3px}
   footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
-  
+  .try{background:var(--surface);border:2px solid var(--accent);border-radius:8px;padding:20px 22px;margin:18px 0 26px}
+  .try .kicker{margin:0 0 4px;font:600 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .try h3{margin:0 0 6px;font:700 28px/1.1 var(--display)}
+  .try p{margin:0 0 14px}
+  .try .note{margin:10px 0 0}
+  .btn.big{font-size:17px;padding:14px 26px}
   .ilcb{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;max-width:580px;margin:0 auto;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:10px;padding:14px 16px;box-shadow:0 10px 32px rgba(0,0,0,.35);font:14px/1.45 var(--body)}
   .ilcb[hidden]{display:none}
   .ilcb p{margin:0 0 12px;color:var(--ink);font-size:14px}
@@ -53,8 +58,15 @@
 <body><div class="wrap">
 <div class="top"><a href="./">Insurance Lots</a><a href="./support.html">Help</a><button class="theme-toggle" type="button" data-to-light="☀ Light" data-to-dark="☾ Dark">☀ Light</button></div>
 
-<h1>You’re set. Open any Copart lot.</h1>
+<h1>You’re set. See it on a real car.</h1>
 <p class="lede">The panel opens on the right of every Copart lot page, and its first check runs by itself — no account, no key, no cost.</p>
+<div class="try">
+<p class="kicker">See it on a real car</p>
+<h3>2027 Bmw M3</h3>
+<p>Sold by GEICO · auction Thu 1 Oct · one of tonight’s insurer-sold cars</p>
+<a class="btn big" href="https://www.copart.com/lot/65455406">Open it on Copart →</a>
+<p class="note">The panel appears on the right of the page within a few seconds.</p>
+</div>
 
 <div class="card"><h3>Has this car been through auction before?</h3>
 <p>The answer is at the top: sold before, ran without selling — with the final bid of each run where the auction archives hold it — or no record found. The archive page is one click away, so you can check us rather than trust us.</p></div>
@@ -63,7 +75,7 @@
 <div class="card"><h3>How does this model do at auction?</h3>
 <p>How many of this model ran in the last month and how many failed to sell, counted from our nightly snapshots of Copart’s whole calendar. Counts, never a valuation.</p></div>
 
-<h2>Try it now</h2>
+<h2>Then try your own</h2>
 <p>Pick any car from <a href="./#today">today’s insurer-sold lots</a> and open it on Copart. On a search page, the badges name the insurer on every row, and one switch hides everything else.</p>
 <p class="note">Tip: click the puzzle-piece icon in Chrome’s toolbar and pin the extension, so its settings are one click away.</p>
 
