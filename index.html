@@ -71,6 +71,16 @@
   section{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
   section:first-of-type{border-top:0}
   h2{margin:0 0 12px;font:600 30px/1.05 var(--display);text-wrap:balance}
+  /* The questions fold to one row (the owner, 2026-10-15). A <details>, so the
+     answers stay in the page for search engines and for the FAQPage data. */
+  #faq summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none}
+  #faq summary::-webkit-details-marker{display:none}
+  #faq summary h2{margin:0}
+  #faq .chev{flex:none;font:600 14px var(--body);color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;padding:6px 12px;white-space:nowrap}
+  #faq .chev .c,#faq details[open] .chev .o{display:none}
+  #faq details[open] .chev .c{display:inline}
+  #faq details[open] summary{margin-bottom:12px}
+  #faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
   p{max-width:66ch}
   .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:5px;background:var(--surface);margin-top:14px}
   table{border-collapse:collapse;width:100%;min-width:700px;font-size:14px}
@@ -227,7 +237,8 @@
 </section>
 
 <section id="faq">
-  <h2>Questions people ask before they bid</h2>
+  <details>
+  <summary><h2>Questions people ask before they bid</h2><span class="chev"><span class="o">Expand ▾</span><span class="c">Collapse ▴</span></span></summary>
   <h3>Why does it matter who sold the car on Copart?</h3>
   <p>It is our starting heuristic, not a rule. A car an insurance company consigns is more likely to be on its first trip through auction, straight from the claim; a car from another seller is more likely to have been bought, repaired and put back through. The seller name is a useful first clue to which of those you are looking at — and Copart shows it on many lots but gives you no way to search by it.</p>
   <h3>What does &quot;minimum bid&quot; mean on a Copart lot?</h3>
@@ -240,6 +251,8 @@
   <p>No. Copart publishes what is for sale, not what happened to it — the public listing data carries no run count and no completed-sale flag. Third-party archives fill some of the gap but have no page at all for most live lots. The free Chrome extension on this site checks two archives and adds the runs it has watched itself.</p>
   <h3>Is this list free?</h3>
   <p>During the beta, yes: sign up with your email and we send you a key to the full filterable list of every insurer-sold lot. Five cars a night also go free to the Telegram channels (the premium channels get twenty), and the browser extension is free and needs no account. When paid plans start, beta members keep $9 a month for life.</p>
+  </details>
+  <script>(function(){var d=document.querySelector("#faq details");function o(){if(location.hash==="#faq")d.open=true;}window.addEventListener("hashchange",o);o();})();</script>
 </section>
 
 <footer>
