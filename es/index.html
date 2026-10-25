@@ -70,6 +70,25 @@
   .stat span{font-size:12.5px;color:var(--muted)}
   section{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
   section:first-of-type{border-top:0}
+  /* The two asks, straight under the banner. */
+  .asks{border-top:0;margin-top:0;padding-top:24px}
+  .asks h2{margin:0 0 10px}
+  .askrule{height:1px;background:var(--line);margin:20px 0 16px}
+  .extlead{margin:0 0 12px;font-size:15px}
+  /* Three counted numbers (metricsStrip). */
+  .mstrip-row{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0 10px}
+  .mstrip-n{flex:1 1 210px;display:flex;gap:11px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+  .mstrip-n b{font:700 30px/1 var(--display);color:var(--accent);white-space:nowrap}
+  .mstrip-n span{font-size:13.5px;line-height:1.4}
+  .mstrip-n i{display:block;opacity:.7;font-style:normal;font-size:12px;margin-top:3px}
+  /* The heuristic, folded. Same affordance as the FAQ so the page has one idiom. */
+  details.why{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
+  details.why summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none}
+  details.why summary::-webkit-details-marker{display:none}
+  details.why summary h2{margin:0}
+  details.why .chev{flex:none;font:600 14px var(--body);color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;padding:6px 12px;white-space:nowrap}
+  details.why[open] summary{margin-bottom:12px}
+  details.why summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
   h2{margin:0 0 12px;font:600 30px/1.05 var(--display);text-wrap:balance}
   /* The questions fold to one row (the owner, 2026-10-15). A <details>, so the
      answers stay in the page for search engines and for the FAQPage data. */
@@ -157,11 +176,36 @@
 </header>
 
 
-<section>
-  <h2>Nuestra heurística: empezar por lo que venden las aseguradoras</h2>
+<section class="asks" id="subscribe">
+  <h2>Suscríbete para recibir novedades semanales</h2>
+  <form id="freeform" class="freeform" novalidate data-endpoint="https://insurance-lots.tlmet.workers.dev/free/signup" data-lang="es" data-list="https://insurance-lots.tlmet.workers.dev/" data-text="{&quot;sending&quot;:&quot;Enviando…&quot;,&quot;ok&quot;:&quot;Qué bueno verte de nuevo: enviamos a {email} un enlace de acceso directo a tu lista. ¿No llega en dos minutos? Revisa el spam.&quot;,&quot;bad&quot;:&quot;Eso no parece un correo electrónico.&quot;,&quot;limit&quot;:&quot;Demasiados registros desde esta red hoy. Inténtalo mañana.&quot;,&quot;fail&quot;:&quot;No pudimos enviar el correo en este momento. Inténtalo de nuevo en unos minutos.&quot;,&quot;ended&quot;:&quot;La beta gratuita terminó.&quot;,&quot;soon&quot;:&quot;El registro abre en unos días. Gracias por tu paciencia. Mientras tanto, los canales de Telegram de abajo publican autos cada noche.&quot;,&quot;inNow&quot;:&quot;Listo. Abriendo tu lista…&quot;}">
+    <label class="sr" for="freeemail">Tu correo</label>
+    <input id="freeemail" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="tu@ejemplo.com">
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit">Regístrate ahora</button>
+  </form>
+  <div id="freemsg" class="freemsg" role="status" aria-live="polite"></div>
+  <p class="note">Al registrarte, aceptas que guardemos tu correo para enviarte la clave de acceso a la lista completa (todos los datos) y que te enviemos nuestro boletín cada domingo: el panorama del mercado de la semana pasada. Te das de baja con un clic. <a href="./privacy.html">Privacidad</a></p>
+  <div class="askrule"></div>
+  <p class="extlead">Mira en la propia página del lote por cuánto se vendió antes ese coche y quién lo vendía.</p>
+  <p><a class="btn ghost" href="https://chromewebstore.google.com/detail/cfkmbjddealedpfmnpdbifcpnegkilcn?utm_source=insurancelots&amp;utm_medium=site&amp;utm_campaign=extension-top-es">Instala la extensión gratis para Chrome</a></p>
+</section>
+
+<section class="mstrip">
+  <h2>Lo que llevamos contado desde el 2026-09-08</h2>
+  <div class="mstrip-row">
+    <div class="mstrip-n"><b>11%</b><span>de los lotes de aseguradoras no se vendieron<i>82,766 subastas, 31 días</i></span></div>
+    <div class="mstrip-n"><b>65%</b><span>de esos se vendieron en la siguiente subasta<i>3,737 de 5,787</i></span></div>
+    <div class="mstrip-n"><b>43 d</b><span>mediana desde la publicación hasta la venta<i>en 265 modelos</i></span></div>
+  </div>
+  <p class="note">Ningún campo de Copart contiene esto: lo contamos con nuestras propias instantáneas nocturnas.</p>
+</section>
+
+<details class="why">
+  <summary><h2>Nuestra heurística: empezar por lo que venden las aseguradoras</h2><span class="chev">Leer más</span></summary>
   <p>Copart publica bastante más de cien mil autos. Los reducimos con una regla práctica: un auto que consigna una aseguradora tiene más probabilidades de estar en su <em>primera</em> subasta, recién salido del siniestro, mientras que un auto de otro vendedor tiene más probabilidades de haber sido comprado, reparado y vuelto a subastar. Es una heurística —un buen lugar para empezar a buscar, no un veredicto sobre ningún auto—. Hay autos buenos de todo tipo de vendedores, y un lote de aseguradora también puede esconder un problema.</p>
   <p>Copart muestra el vendedor en muchos lotes, pero no te deja buscar por él. Esta lista sí. Cada noche lee los datos de los propios anuncios de Copart, de todos los lotes con fecha de subasta; se queda con los que consignó una aseguradora y aplica los filtros de arriba. Nada aquí sale de terceros y nada se adivina: vendedor, título, estado de marcha y millaje son campos del propio Copart, tal cual.</p>
-</section>
+</details>
 
 <section id="today">
   <h2>La lista de hoy: una muestra</h2>
@@ -195,14 +239,7 @@
       <li>Actualizada cada noche, con alertas en Telegram para los filtros que guardes.</li>
       <li>Cada domingo por correo: el panorama del mercado de la semana pasada, con todas las métricas que contamos.</li>
     </ul>
-    <form id="freeform" class="freeform" novalidate data-endpoint="https://insurance-lots.tlmet.workers.dev/free/signup" data-lang="es" data-list="https://insurance-lots.tlmet.workers.dev/" data-text="{&quot;sending&quot;:&quot;Enviando…&quot;,&quot;ok&quot;:&quot;Qué bueno verte de nuevo: enviamos a {email} un enlace de acceso directo a tu lista. ¿No llega en dos minutos? Revisa el spam.&quot;,&quot;bad&quot;:&quot;Eso no parece un correo electrónico.&quot;,&quot;limit&quot;:&quot;Demasiados registros desde esta red hoy. Inténtalo mañana.&quot;,&quot;fail&quot;:&quot;No pudimos enviar el correo en este momento. Inténtalo de nuevo en unos minutos.&quot;,&quot;ended&quot;:&quot;La beta gratuita terminó.&quot;,&quot;soon&quot;:&quot;El registro abre en unos días. Gracias por tu paciencia. Mientras tanto, los canales de Telegram de abajo publican autos cada noche.&quot;,&quot;inNow&quot;:&quot;Listo. Abriendo tu lista…&quot;}">
-      <label class="sr" for="freeemail">Tu correo</label>
-      <input id="freeemail" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="tu@ejemplo.com">
-      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn" type="submit">Regístrate ahora</button>
-    </form>
-    <div id="freemsg" class="freemsg" role="status" aria-live="polite"></div>
-    <p class="note">Al registrarte, aceptas que guardemos tu correo para enviarte la clave de acceso a la lista completa (todos los datos) y que te enviemos nuestro boletín cada domingo: el panorama del mercado de la semana pasada. Te das de baja con un clic. <a href="./privacy.html">Privacidad</a></p>
+    <p style="margin-top:16px"><a class="btn" href="#subscribe">Regístrate ahora</a></p>
     <p class="note">Cuando empiecen los planes de pago, los miembros de la beta conservan $9 al mes de por vida. Te escribiremos antes de que cambie cualquier cosa.</p>
     <p class="note">Al registrarte entras directo a la lista. También te llega por correo un enlace de acceso directo para tus otros dispositivos; <a href="https://insurance-lots.tlmet.workers.dev/#lang=es">la lista</a> te recuerda en cada navegador.</p>
   </div>

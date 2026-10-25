@@ -70,6 +70,25 @@
   .stat span{font-size:12.5px;color:var(--muted)}
   section{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
   section:first-of-type{border-top:0}
+  /* The two asks, straight under the banner. */
+  .asks{border-top:0;margin-top:0;padding-top:24px}
+  .asks h2{margin:0 0 10px}
+  .askrule{height:1px;background:var(--line);margin:20px 0 16px}
+  .extlead{margin:0 0 12px;font-size:15px}
+  /* Three counted numbers (metricsStrip). */
+  .mstrip-row{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0 10px}
+  .mstrip-n{flex:1 1 210px;display:flex;gap:11px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+  .mstrip-n b{font:700 30px/1 var(--display);color:var(--accent);white-space:nowrap}
+  .mstrip-n span{font-size:13.5px;line-height:1.4}
+  .mstrip-n i{display:block;opacity:.7;font-style:normal;font-size:12px;margin-top:3px}
+  /* The heuristic, folded. Same affordance as the FAQ so the page has one idiom. */
+  details.why{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
+  details.why summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none}
+  details.why summary::-webkit-details-marker{display:none}
+  details.why summary h2{margin:0}
+  details.why .chev{flex:none;font:600 14px var(--body);color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;padding:6px 12px;white-space:nowrap}
+  details.why[open] summary{margin-bottom:12px}
+  details.why summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
   h2{margin:0 0 12px;font:600 30px/1.05 var(--display);text-wrap:balance}
   /* The questions fold to one row (the owner, 2026-10-15). A <details>, so the
      answers stay in the page for search engines and for the FAQPage data. */
@@ -157,11 +176,36 @@
 </header>
 
 
-<section>
-  <h2>Our heuristic: start with what the insurers sold</h2>
+<section class="asks" id="subscribe">
+  <h2>Subscribe for weekly updates</h2>
+  <form id="freeform" class="freeform" novalidate data-endpoint="https://insurance-lots.tlmet.workers.dev/free/signup" data-lang="en" data-list="https://insurance-lots.tlmet.workers.dev/" data-text="{&quot;sending&quot;:&quot;Sending…&quot;,&quot;ok&quot;:&quot;Welcome back: we have e-mailed a one-click link to your list to {email}. Not there in two minutes? Check spam.&quot;,&quot;bad&quot;:&quot;That does not look like an email address.&quot;,&quot;limit&quot;:&quot;Too many sign-ups from this network today. Please try tomorrow.&quot;,&quot;fail&quot;:&quot;We could not send the email just now. Please try again in a few minutes.&quot;,&quot;ended&quot;:&quot;The free beta has ended.&quot;,&quot;soon&quot;:&quot;Sign-up opens in a few days. Thank you for your patience. Meanwhile, the Telegram channels below post cars every night.&quot;,&quot;inNow&quot;:&quot;You’re in. Opening your list…&quot;}">
+    <label class="sr" for="freeemail">Your email</label>
+    <input id="freeemail" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com">
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit">Sign up now</button>
+  </form>
+  <div id="freemsg" class="freemsg" role="status" aria-live="polite"></div>
+  <p class="note">By signing up, you agree that we store your email address to send you the access key to the full list (all the data), and that we email you our newsletter every Sunday: last week’s market outlook. One click unsubscribes. <a href="./privacy.html">Privacy</a></p>
+  <div class="askrule"></div>
+  <p class="extlead">See what a car sold for at its earlier auctions, and who sold it, on the Copart page itself.</p>
+  <p><a class="btn ghost" href="https://chromewebstore.google.com/detail/cfkmbjddealedpfmnpdbifcpnegkilcn?utm_source=insurancelots&amp;utm_medium=site&amp;utm_campaign=extension-top-en">Add the free Chrome extension</a></p>
+</section>
+
+<section class="mstrip">
+  <h2>What we have counted since 2026-09-08</h2>
+  <div class="mstrip-row">
+    <div class="mstrip-n"><b>11%</b><span>of insurer-sold lots did not sell<i>82,766 auctions, 31 days</i></span></div>
+    <div class="mstrip-n"><b>65%</b><span>of those sold at the next auction<i>3,737 of 5,787</i></span></div>
+    <div class="mstrip-n"><b>43 d</b><span>median from listing to sale<i>across 265 models</i></span></div>
+  </div>
+  <p class="note">No Copart field carries any of this. It is counted from our own nightly snapshots.</p>
+</section>
+
+<details class="why">
+  <summary><h2>Our heuristic: start with what the insurers sold</h2><span class="chev">Read more</span></summary>
   <p>Copart lists well over a hundred thousand cars. We narrow them with one rule of thumb: a car consigned by an insurance company is more likely to be on its <em>first</em> trip through auction, straight from the claim, while a car from another seller is more likely to have been bought, worked on and put back through. It is a heuristic — a sensible place to start looking, not a verdict on any car. Good cars come from every kind of seller, and an insurer’s lot can still hide a problem.</p>
   <p>Copart shows the seller on many lots but gives you no way to search by it. This list does. Every night it reads Copart’s own listing data for every lot with a sale date, keeps the ones an insurer consigned, and applies the filters above. Nothing here is scraped from a third party and nothing is guessed — seller, title, drive status and mileage are Copart’s own fields, reproduced.</p>
-</section>
+</details>
 
 <section id="today">
   <h2>Today’s list — a sample</h2>
@@ -195,14 +239,7 @@
       <li>Updated every night, with Telegram alerts for the filters you save.</li>
       <li>Every Sunday by email: last week’s market outlook, with every metric we count.</li>
     </ul>
-    <form id="freeform" class="freeform" novalidate data-endpoint="https://insurance-lots.tlmet.workers.dev/free/signup" data-lang="en" data-list="https://insurance-lots.tlmet.workers.dev/" data-text="{&quot;sending&quot;:&quot;Sending…&quot;,&quot;ok&quot;:&quot;Welcome back: we have e-mailed a one-click link to your list to {email}. Not there in two minutes? Check spam.&quot;,&quot;bad&quot;:&quot;That does not look like an email address.&quot;,&quot;limit&quot;:&quot;Too many sign-ups from this network today. Please try tomorrow.&quot;,&quot;fail&quot;:&quot;We could not send the email just now. Please try again in a few minutes.&quot;,&quot;ended&quot;:&quot;The free beta has ended.&quot;,&quot;soon&quot;:&quot;Sign-up opens in a few days. Thank you for your patience. Meanwhile, the Telegram channels below post cars every night.&quot;,&quot;inNow&quot;:&quot;You’re in. Opening your list…&quot;}">
-      <label class="sr" for="freeemail">Your email</label>
-      <input id="freeemail" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com">
-      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn" type="submit">Sign up now</button>
-    </form>
-    <div id="freemsg" class="freemsg" role="status" aria-live="polite"></div>
-    <p class="note">By signing up, you agree that we store your email address to send you the access key to the full list (all the data), and that we email you our newsletter every Sunday: last week’s market outlook. One click unsubscribes. <a href="./privacy.html">Privacy</a></p>
+    <p style="margin-top:16px"><a class="btn" href="#subscribe">Sign up now</a></p>
     <p class="note">When paid plans start, beta members keep $9 a month for life. We will email you before anything changes.</p>
     <p class="note">Sign up and you go straight into the list. A one-click link to it also goes to your email, for your other devices; <a href="https://insurance-lots.tlmet.workers.dev/">the list</a> remembers you in each browser.</p>
   </div>

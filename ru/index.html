@@ -70,6 +70,25 @@
   .stat span{font-size:12.5px;color:var(--muted)}
   section{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
   section:first-of-type{border-top:0}
+  /* The two asks, straight under the banner. */
+  .asks{border-top:0;margin-top:0;padding-top:24px}
+  .asks h2{margin:0 0 10px}
+  .askrule{height:1px;background:var(--line);margin:20px 0 16px}
+  .extlead{margin:0 0 12px;font-size:15px}
+  /* Three counted numbers (metricsStrip). */
+  .mstrip-row{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0 10px}
+  .mstrip-n{flex:1 1 210px;display:flex;gap:11px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+  .mstrip-n b{font:700 30px/1 var(--display);color:var(--accent);white-space:nowrap}
+  .mstrip-n span{font-size:13.5px;line-height:1.4}
+  .mstrip-n i{display:block;opacity:.7;font-style:normal;font-size:12px;margin-top:3px}
+  /* The heuristic, folded. Same affordance as the FAQ so the page has one idiom. */
+  details.why{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
+  details.why summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none}
+  details.why summary::-webkit-details-marker{display:none}
+  details.why summary h2{margin:0}
+  details.why .chev{flex:none;font:600 14px var(--body);color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;padding:6px 12px;white-space:nowrap}
+  details.why[open] summary{margin-bottom:12px}
+  details.why summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
   h2{margin:0 0 12px;font:600 30px/1.05 var(--display);text-wrap:balance}
   /* The questions fold to one row (the owner, 2026-10-15). A <details>, so the
      answers stay in the page for search engines and for the FAQPage data. */
@@ -157,11 +176,36 @@
 </header>
 
 
-<section>
-  <h2>Наша эвристика: начинать с того, что продают страховые</h2>
+<section class="asks" id="subscribe">
+  <h2>Подпишитесь на еженедельные обновления</h2>
+  <form id="freeform" class="freeform" novalidate data-endpoint="https://insurance-lots.tlmet.workers.dev/free/signup" data-lang="ru" data-list="https://insurance-lots.tlmet.workers.dev/" data-text="{&quot;sending&quot;:&quot;Отправляем…&quot;,&quot;ok&quot;:&quot;С возвращением: мы отправили ссылку на ваш список на {email}. Не пришла за две минуты? Проверьте «Спам».&quot;,&quot;bad&quot;:&quot;Это не похоже на адрес электронной почты.&quot;,&quot;limit&quot;:&quot;Слишком много регистраций из этой сети сегодня. Попробуйте завтра.&quot;,&quot;fail&quot;:&quot;Не удалось отправить письмо. Попробуйте через несколько минут.&quot;,&quot;ended&quot;:&quot;Бесплатная бета закончилась.&quot;,&quot;soon&quot;:&quot;Регистрация откроется через несколько дней. Спасибо за терпение. А пока Telegram-каналы ниже публикуют машины каждую ночь.&quot;,&quot;inNow&quot;:&quot;Готово. Открываем ваш список…&quot;}">
+    <label class="sr" for="freeemail">Ваш e-mail</label>
+    <input id="freeemail" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com">
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit">Зарегистрироваться</button>
+  </form>
+  <div id="freemsg" class="freemsg" role="status" aria-live="polite"></div>
+  <p class="note">Регистрируясь, вы соглашаетесь, что мы храним ваш e-mail, чтобы прислать ключ доступа к полному списку (все данные), и каждое воскресенье присылаем нашу рассылку — обзор рынка за прошедшую неделю. Отписка в один клик. <a href="./privacy.html">Конфиденциальность</a></p>
+  <div class="askrule"></div>
+  <p class="extlead">Прямо на странице лота: за сколько эта машина продавалась раньше и кто её продавал.</p>
+  <p><a class="btn ghost" href="https://chromewebstore.google.com/detail/cfkmbjddealedpfmnpdbifcpnegkilcn?utm_source=insurancelots&amp;utm_medium=site&amp;utm_campaign=extension-top-ru">Установить бесплатное расширение для Chrome</a></p>
+</section>
+
+<section class="mstrip">
+  <h2>Что мы насчитали с 2026-09-08</h2>
+  <div class="mstrip-row">
+    <div class="mstrip-n"><b>11%</b><span>лотов от страховых не продались<i>82,766 торгов, 31 дней</i></span></div>
+    <div class="mstrip-n"><b>65%</b><span>из них продались на следующих торгах<i>3,737 из 5,787</i></span></div>
+    <div class="mstrip-n"><b>43 д</b><span>медиана от выставления до продажи<i>по 265 моделям</i></span></div>
+  </div>
+  <p class="note">Ни одно поле Copart этого не содержит — мы считаем это по собственным ночным снимкам.</p>
+</section>
+
+<details class="why">
+  <summary><h2>Наша эвристика: начинать с того, что продают страховые</h2><span class="chev">Подробнее</span></summary>
   <p>На Copart выставлено больше ста тысяч машин. Мы сужаем их одним практическим правилом: машина, которую выставила страховая компания, чаще попадает на аукцион <em>впервые</em> — прямо после страхового случая, а машина от другого продавца чаще уже была куплена, отремонтирована и выставлена снова. Это эвристика — разумная точка, с которой стоит начинать поиск, а не приговор конкретной машине. Хорошие машины бывают у любых продавцов, а лот страховой тоже может скрывать проблему.</p>
   <p>Copart показывает продавца на многих лотах, но искать по нему не даёт. Этот список даёт. Каждую ночь он читает собственные данные Copart по каждому лоту с датой торгов, оставляет те, что выставила страховая, и применяет фильтры выше. Здесь ничего не взято со стороны и ничего не додумано: продавец, тайтл, статус «на ходу» и пробег — это поля самого Copart, воспроизведённые как есть.</p>
-</section>
+</details>
 
 <section id="today">
   <h2>Сегодняшний список — фрагмент</h2>
@@ -195,14 +239,7 @@
       <li>Обновляется каждую ночь, с оповещениями в Telegram по вашим фильтрам.</li>
       <li>Каждое воскресенье на почту: обзор рынка за прошедшую неделю — все наши метрики.</li>
     </ul>
-    <form id="freeform" class="freeform" novalidate data-endpoint="https://insurance-lots.tlmet.workers.dev/free/signup" data-lang="ru" data-list="https://insurance-lots.tlmet.workers.dev/" data-text="{&quot;sending&quot;:&quot;Отправляем…&quot;,&quot;ok&quot;:&quot;С возвращением: мы отправили ссылку на ваш список на {email}. Не пришла за две минуты? Проверьте «Спам».&quot;,&quot;bad&quot;:&quot;Это не похоже на адрес электронной почты.&quot;,&quot;limit&quot;:&quot;Слишком много регистраций из этой сети сегодня. Попробуйте завтра.&quot;,&quot;fail&quot;:&quot;Не удалось отправить письмо. Попробуйте через несколько минут.&quot;,&quot;ended&quot;:&quot;Бесплатная бета закончилась.&quot;,&quot;soon&quot;:&quot;Регистрация откроется через несколько дней. Спасибо за терпение. А пока Telegram-каналы ниже публикуют машины каждую ночь.&quot;,&quot;inNow&quot;:&quot;Готово. Открываем ваш список…&quot;}">
-      <label class="sr" for="freeemail">Ваш e-mail</label>
-      <input id="freeemail" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@example.com">
-      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn" type="submit">Зарегистрироваться</button>
-    </form>
-    <div id="freemsg" class="freemsg" role="status" aria-live="polite"></div>
-    <p class="note">Регистрируясь, вы соглашаетесь, что мы храним ваш e-mail, чтобы прислать ключ доступа к полному списку (все данные), и каждое воскресенье присылаем нашу рассылку — обзор рынка за прошедшую неделю. Отписка в один клик. <a href="./privacy.html">Конфиденциальность</a></p>
+    <p style="margin-top:16px"><a class="btn" href="#subscribe">Зарегистрироваться</a></p>
     <p class="note">Когда начнутся платные тарифы, участники беты сохранят цену $9 в месяц навсегда. Мы напишем вам заранее.</p>
     <p class="note">После регистрации вы сразу попадёте в список. Ссылка в один клик придёт и на почту — для других устройств; <a href="https://insurance-lots.tlmet.workers.dev/#lang=ru">список</a> запомнит вас в каждом браузере.</p>
   </div>
