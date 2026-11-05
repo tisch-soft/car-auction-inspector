@@ -51,6 +51,12 @@
 <div class="wrap">
 <p>Every shipped version, newest first. <code>tools/build-zip.ps1</code> refuses to build a version that is not listed here, for the same reason it bumps the version on every build: a release nobody can identify is a release nobody can support.</p>
 <p>The Chrome Web Store has no &quot;what's new&quot; field, so this file is the record. It is rendered onto the landing page by the nightly site build and linked from the extension's own popup.</p>
+<h2 id="v6.17.4">6.17.4</h2>
+<p><strong>The panel now reads the sale terms on every lot instead of about half of them.</strong> Winning a car you cannot be sold is the most expensive mistake on Copart, and on any lot with a reserve price the panel had been saying nothing at all about it.</p>
+<ul>
+  <li><strong>Minimum-bid lots now show their sale terms.</strong> The panel looked for the words &quot;On minimum bid&quot;, which Copart's lot pages never print — what they print is &quot;Minimum bid: Seller reserve not yet met&quot;, and a 20-character limit threw that away as well. Minimum bid is about 51% of everything on Copart's calendar (58,153 lots of ~114,000 in the week of 19 October), so the Sale line was simply absent on every other lot a new user opened. It went unnoticed here because insurance lots — the ones this tool was built around and tested on — are 83% pure sale, the one wording that did work.</li>
+  <li>The three wordings Copart really uses were each read off a live lot and are now matched on the badge itself, so help text that merely mentions a minimum bid is not mistaken for one. A lot whose sale has already ended shows no terms, and the panel still says nothing there, which is the honest answer.</li>
+</ul>
 <h2 id="v6.17.3">6.17.3</h2>
 <p><strong>A new name — Insurance Lots: Car Auction History &amp; AI Inspector — and final bids in the auction history.</strong> Chrome installs it by itself once the Chrome Web Store has reviewed it. (6.17.2 was withdrawn from review the same day to add the last two fixes below; it never reached anyone.)</p>
 <ul>
