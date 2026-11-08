@@ -51,8 +51,15 @@
 <div class="wrap">
 <p>Every shipped version, newest first. <code>tools/build-zip.ps1</code> refuses to build a version that is not listed here, for the same reason it bumps the version on every build: a release nobody can identify is a release nobody can support.</p>
 <p>The Chrome Web Store has no &quot;what's new&quot; field, so this file is the record. It is rendered onto the landing page by the nightly site build and linked from the extension's own popup.</p>
+<h2 id="v6.17.7">6.17.7</h2>
+<p><strong>A lot that has just sold is no longer called a re-sale, or a car with no history.</strong> Not out yet: Chrome installs it by itself once it has passed the Chrome Web Store's review.</p>
+<ul>
+  <li>The auction archives list a lot's own sale in its history table. The panel read that row as an earlier sale, so a car sold once, by its insurer, on the day you opened it showed &quot;Re-sale — previously sold by an insurer&quot;, and one sold by anyone else showed a red &quot;Sold before&quot;. It now says what happened: &quot;This lot sold for $19,500&quot;, with the seller and date, and keeps the verdict about the car's past for its earlier sales only. &quot;Compare photos&quot; no longer offers to compare a listing with itself.</li>
+  <li>An answer saved before a lot's auction is fetched again once the auction is over, instead of showing &quot;No prior sale&quot; for up to a week beside a sale the archive already lists.</li>
+  <li>A lot that sold and is back on the calendar under the same number says so — &quot;Sold for $19,500 on 4 Nov, now back at auction&quot; — which usually means the winner did not pay.</li>
+</ul>
 <h2 id="v6.17.6">6.17.6</h2>
-<p><strong>No more &quot;Has history&quot; on a car with no history.</strong> Not out yet: Chrome installs it by itself once it has passed the Chrome Web Store's review.</p>
+<p><strong>No more &quot;Has history&quot; on a car with no history.</strong> Out since 7 November 2026; Chrome installs it by itself.</p>
 <ul>
   <li>Reopening a lot whose auction history had already been checked labelled it &quot;Has history&quot; beside the verdict, even when the verdict said the archives had nothing for it. The history answer now appears in one place only, the verdict at the top of the panel, and &quot;Check again&quot; updates that verdict too.</li>
 </ul>
