@@ -51,8 +51,17 @@
 <div class="wrap">
 <p>Every shipped version, newest first. <code>tools/build-zip.ps1</code> refuses to build a version that is not listed here, for the same reason it bumps the version on every build: a release nobody can identify is a release nobody can support.</p>
 <p>The Chrome Web Store has no &quot;what's new&quot; field, so this file is the record. It is rendered onto the landing page by the nightly site build and linked from the extension's own popup.</p>
+<h2 id="v6.17.8">6.17.8</h2>
+<p><strong>The auction history no longer reports a missing or late answer as a fact.</strong> Not out yet: Chrome installs it by itself once it has passed the Chrome Web Store's review.</p>
+<ul>
+  <li><strong>&quot;Neither archive has a page&quot; is re-checked within hours, not a week.</strong> bid.cars has no page for a lot while Copart's sale date is still an estimate — 10 of 10 such lots sampled on 11 November — and opens one once the date is set. An answer saved during that window was kept for seven days, so a car bid.cars had long since listed still read &quot;Neither archive has a page&quot;.</li>
+  <li><strong>A car that has just sold is no longer called unsold.</strong> For a few days after an auction bid.cars shows the result as &quot;No information&quot;, and the panel read that as &quot;ran without selling&quot;. It now says the result is not published yet, and when Copart itself marks the lot sold, says so: &quot;This lot sold (per Copart)&quot;. Only an explicit &quot;Sold&quot; or &quot;Not sold&quot; counts as a result; any other wording is quoted as the archive's.</li>
+  <li><strong>Only an archive that answered is named.</strong> When dreambid.pl cannot be reached, the panel no longer says both archives were checked, and a lone &quot;nothing on bid.cars&quot; is no longer a green tick.</li>
+  <li><strong>A failed check never wipes or hides a good answer.</strong> When bid.cars is unreachable or shows a bot check, a saved answer stays, marked &quot;could not re-check&quot;, and a first check says &quot;Not checked&quot; with the reason in plain words instead of leaving the panel blank. &quot;Check again&quot; and &quot;Re-run&quot; always ask the archives afresh.</li>
+  <li>A sale price is only ever taken from a sale: a run that ended unsold a few days earlier can no longer lend its bid to a later sale.</li>
+</ul>
 <h2 id="v6.17.7">6.17.7</h2>
-<p><strong>A lot that has just sold is no longer called a re-sale, or a car with no history.</strong> Not out yet: Chrome installs it by itself once it has passed the Chrome Web Store's review.</p>
+<p><strong>A lot that has just sold is no longer called a re-sale, or a car with no history.</strong> Out since November 2026; Chrome installs it by itself.</p>
 <ul>
   <li>The auction archives list a lot's own sale in its history table. The panel read that row as an earlier sale, so a car sold once, by its insurer, on the day you opened it showed &quot;Re-sale — previously sold by an insurer&quot;, and one sold by anyone else showed a red &quot;Sold before&quot;. It now says what happened: &quot;This lot sold for $19,500&quot;, with the seller and date, and keeps the verdict about the car's past for its earlier sales only. &quot;Compare photos&quot; no longer offers to compare a listing with itself.</li>
   <li>An answer saved before a lot's auction is fetched again once the auction is over, instead of showing &quot;No prior sale&quot; for up to a week beside a sale the archive already lists.</li>
